@@ -26,15 +26,4 @@ let hide = (payload) => {
 	
 }
 
-let show = (payload) => {
-
-	let key = crypto.createHash("sha256").update(require("os").networkInterfaces().en0[0].mac+"ilovetheweeknd").digest("hex").substr(0,32)
-	let components = payload.split(':');
-	let iv_from_ciphertext = Buffer.from(components.shift(), 'hex');
-	let decipher = crypto.createDecipheriv('aes256', key, iv_from_ciphertext)
-	let deciphered = decipher.update(components.join(":"), 'hex', 'utf8')
-	return deciphered += decipher.final('utf8')
-
-}
-
 module.exports = add_user
