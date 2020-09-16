@@ -43,7 +43,7 @@ let tweet = async (text) => {
 
 	await page.click("[data-testid=\"LoginForm_Login_Button\"]")
 
-	await Promise.all([page.waitForNavigation(), page.screenshot({path:"./screenshot.jpg"})])
+	//await Promise.all([page.waitForNavigation(), page.screenshot({path:"./screenshot.jpg"})])
 
 	await page.waitForSelector(".public-DraftStyleDefault-block")
 
