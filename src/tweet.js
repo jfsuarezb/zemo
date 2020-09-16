@@ -17,7 +17,14 @@ let tweet = async (text) => {
 
 	console.log("Beginning tweeting process...")
 
-	const browser = await puppeteer.launch();
+	if (!fs.existsSync("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")) {
+		
+		console.log("You need Chrome installed for this app to work")
+		process.exit()
+
+	}
+
+	const browser = await puppeteer.launch({headless:false,executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
 	const page = await browser.newPage();
 	
 	await page.goto("https://twitter.com")
