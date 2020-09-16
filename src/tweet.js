@@ -27,6 +27,8 @@ let tweet = async (text) => {
 	const browser = await puppeteer.launch({executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
 	const page = await browser.newPage();
 	
+	await page.setViewport({width:742, height:1369})
+
 	await page.goto("https://twitter.com")
 
 	await page.waitForSelector("[data-testid=\"loginButton\"]")
@@ -40,6 +42,8 @@ let tweet = async (text) => {
 	await page.type("[name=\"session[password]\"]", password)
 
 	await page.click("[data-testid=\"LoginForm_Login_Button\"]")
+
+	await Promise.all([page.waitForNavigation(), page.screenshot({path:"./screenshot.jpg"})])
 
 	await page.waitForSelector(".public-DraftStyleDefault-block")
 
