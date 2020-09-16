@@ -24,14 +24,18 @@ let tweet = async (text) => {
 
 	}
 
-	const browser = await puppeteer.launch({executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
-	const page = await browser.newPage();
+	const browser = await puppeteer.launch({headless:true,slowMo:200,executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
+	const page = await browser.newPage()
 	
 	await page.setViewport({width:742, height:1369})
+	
+	await page.setUserAgent("Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Mobile Safari/537.36");
 
 	await page.goto("https://twitter.com")
 
 	await page.waitForSelector("[data-testid=\"loginButton\"]")
+	
+	await page.setUserAgent("Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Mobile Safari/537.36");
 
 	await page.click("[data-testid=\"loginButton\"]")
 
@@ -41,9 +45,9 @@ let tweet = async (text) => {
 
 	await page.type("[name=\"session[password]\"]", password)
 
-	await page.click("[data-testid=\"LoginForm_Login_Button\"]")
+	await page.setUserAgent("Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Mobile Safari/537.36");
 
-	//await Promise.all([page.waitForNavigation(), page.screenshot({path:"./screenshot.jpg"})])
+	await page.click("[data-testid=\"LoginForm_Login_Button\"]")
 
 	await page.waitForSelector(".public-DraftStyleDefault-block")
 
