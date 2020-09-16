@@ -24,7 +24,7 @@ let tweet = async (text) => {
 
 	}
 
-	const browser = await puppeteer.launch({headless:false,executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
+	const browser = await puppeteer.launch({executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
 	const page = await browser.newPage();
 	
 	await page.goto("https://twitter.com")
