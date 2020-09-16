@@ -3,14 +3,14 @@ const fs = require("fs")
 
 let tweet = async (text) => {
 
-	if (!fs.existsSync(process.env.HOME+"/zemo.config")) {
+	if (!fs.existsSync(process.env.HOME+"/.zemo.config")) {
 		
 		console.log("You first need to add a user with zemo add_user -u <username> -p <password>")
 		process.exit()
 	
 	}
 
-	[ username, password ] = show(fs.readFileSync(process.env.HOME+"/zemo.config")).split("|")
+	[ username, password ] = show(fs.readFileSync(process.env.HOME+"/.zemo.config")).split("|")
 
 	console.log("Beginning tweeting process...")
 
