@@ -24,7 +24,7 @@ let tweet = async (text) => {
 
 	}
 
-	const browser = await puppeteer.launch({headless:true,slowMo:200,executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
+	const browser = await puppeteer.launch({headless:true,slowMo:100,executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
 	const page = await browser.newPage()
 	
 	await page.setViewport({width:742, height:1369})
