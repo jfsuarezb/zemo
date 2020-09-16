@@ -3,15 +3,7 @@ const crypto = require("crypto")
 
 let add_user = (username, password) => {
 
-	if (fs.existsSync(process.env.HOME+"/.zemo.config")) {
-
-		fs.unlinkSync(process.env.HOME+"/.zemo.config")
-
-	}
-
-	let writeStream = fs.createWriteStream(process.env.HOME+"/.zemo.config")
-	writeStream.write(hide(username+"|"+password))
-	writeStream.end()
+	fs.writeFileSync(process.env.HOME+"/.zemo.config", hide(username+"|"+password))
 	
 }
 
